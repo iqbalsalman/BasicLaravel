@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Model\Blogs;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        return view('blog/home');
+        $blogs = Blogs::all();
+        // dd($blogs);
+        return view('blog/home', ['blogs' => $blogs]);
     }
     public function show($id)
     {
@@ -20,11 +22,14 @@ class BlogController extends Controller
 
         // DB::table('users')->where('username','kas')->update(
         //     ['username' => 'nostalgia', 'password' => 'jos']);
-        DB::table('users')->where('id', 2)->delete();
+        // DB::table('users')->where('id', 2)->delete();
         // $users = DB::table('users')->where('username', 'like', '%a')->get();
 
-        $users = DB::table('users')->get();
+        // $users = DB::table('users')->get();
         // $alert = '<script>alert("x!")</script>';
-        return view('blog/single', ['blog' => $nilai, 'users' => $users]);
+        $blogs = Blogs::find($id);
+        // dd($blogs);
+        
+        return view('blog/single', ['blogs' => $blogs]);
     }
 }

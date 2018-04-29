@@ -6,11 +6,15 @@
 
 @section('content')
 
-@foreach ($users as $user)
+{{-- @foreach ($users as $user)
 
-<li> {{$user}} </li> 
+<li> {{$user}} </li>  --}}
 
+{{-- @endforeach --}}
+
+@foreach ($blogs as $blog)
+
+{{$blog->blogs}}    
 @endforeach
-
 
 @endsection
